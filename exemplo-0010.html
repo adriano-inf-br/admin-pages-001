@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Exemplo 0010</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css" />
+<link rel="stylesheet" href="assets/css/styles.css" />
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<script src="https://unpkg.com/element-plus"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/componentes.js"></script>
+
+</head>
+<body data-slug="exemplo-0010.html">
+<div id="app" class="layout">
+  <aside :class="['sidebar', { aberta: sidebarAberta }]">
+    <div class="sidebar__topo">
+      <div>
+        <div class="logo">Enterprise Admin</div>
+        <div class="badge-status">Vue 3 + Element Plus</div>
+      </div>
+      <el-button circle text @click="fecharSidebar" class="hide-desktop">✕</el-button>
+    </div>
+
+    <div class="sidebar__grupo">
+      <p class="sidebar__titulo">Navegação</p>
+      <a href="index.html" :class="['menu-link', { ativo: paginaAtual === 'dashboard' }]">🏠 <span>Dashboard</span></a>
+      <a href="exemplos.html" :class="['menu-link', { ativo: paginaAtual === 'exemplos' }]">🧪 <span>Lista de exemplos</span></a>
+      <a href="conteudo.html" :class="['menu-link', { ativo: paginaAtual === 'conteudo' }]">📝 <span>Conteúdo dinâmico</span></a>
+    </div>
+
+    <div class="sidebar__grupo">
+      <p class="sidebar__titulo">Ações</p>
+      <a href="login.html" class="menu-link">🔐 <span>Login</span></a>
+      <button class="menu-link" style="width:100%;border:none;cursor:pointer;text-align:left" @click="sair">🚪 <span>Sair</span></button>
+    </div>
+  </aside>
+
+  <main class="main">
+    
+<header class="topbar">
+  <div style="display:flex; gap:10px; align-items:center;">
+    <button class="botao-menu" @click="alternarSidebar">☰</button>
+    <div class="topbar__titulo">
+      <h1>{{ exemploAtual.titulo }}</h1>
+      <p>{{ exemploAtual.descricao }}</p>
+    </div>
+  </div>
+  <div class="topbar__acoes">
+    <el-button plain @click="ir('exemplos.html')">Voltar à lista</el-button>
+    <el-button type="primary" @click="ir('conteudo.html')">Editar JSON</el-button>
+  </div>
+</header>
+<section class="conteudo">
+  <section class="hero-exemplo">
+    <div class="muted" style="color:rgba(255,255,255,.8)">{{ exemploAtual.categoria }} • {{ exemploAtual.arquivo }}</div>
+    <h1>{{ exemploAtual.titulo }}</h1>
+    <p>{{ exemploAtual.descricao }}</p>
+    <div class="stats-mini">
+      <div class="box"><small>Indicador A</small><strong>{{ exemploAtual.indicador_a }}</strong></div>
+      <div class="box"><small>Indicador B</small><strong>{{ exemploAtual.indicador_b }}</strong></div>
+      <div class="box"><small>Status</small><strong>{{ exemploAtual.destaque }}</strong></div>
+      <div class="box"><small>Origem</small><strong>localStorage JSON</strong></div>
+    </div>
+  </section>
+  <section class="grid-duplo">
+    <article class="painel">
+      <div class="painel__cabecalho"><div><h2>Resumo operacional</h2><p>Conteúdo renderizado dinamicamente a partir do item correspondente no JSON.</p></div></div>
+      <div class="lista-links">
+        <div class="link-lista"><div><strong>Estratégia</strong><div class="muted">Este layout permite reaproveitar a mesma estrutura para vários arquivos HTML.</div></div></div>
+        <div class="link-lista"><div><strong>Persistência local</strong><div class="muted">Ao editar em conteúdo.html, os dados passam a valer para este exemplo.</div></div></div>
+        <div class="link-lista"><div><strong>GitHub Pages</strong><div class="muted">Não depende de backend para exibir a experiência visual.</div></div></div>
+      </div>
+    </article>
+    <article class="painel">
+      <div class="painel__cabecalho"><div><h2>Próximas ações</h2><p>Sugestões para evolução do sistema.</p></div></div>
+      <div class="barra-indicador">
+        <div>
+          <div class="barra-item__topo"><span>Refino de UX</span><strong>78%</strong></div>
+          <div class="barra-bg"><div class="barra-fill" style="width:78%;background:#2563eb"></div></div>
+        </div>
+        <div>
+          <div class="barra-item__topo"><span>Catálogo de exemplos</span><strong>64%</strong></div>
+          <div class="barra-bg"><div class="barra-fill" style="width:64%;background:#16a34a"></div></div>
+        </div>
+        <div>
+          <div class="barra-item__topo"><span>Segurança real com backend</span><strong>12%</strong></div>
+          <div class="barra-bg"><div class="barra-fill" style="width:12%;background:#dc2626"></div></div>
+        </div>
+      </div>
+    </article>
+  </section>
+</section>
+
+    <div class="footer">Conteúdo dinâmico salvo em localStorage • Projeto estático para GitHub Pages</div>
+  </main>
+</div>
+<script src="assets/js/exemplo-view.js"></script>
+</body>
+</html>

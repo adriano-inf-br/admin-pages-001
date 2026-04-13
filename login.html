@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Login do Painel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css" />
+<link rel="stylesheet" href="assets/css/styles.css" />
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<script src="https://unpkg.com/element-plus"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/componentes.js"></script>
+
+</head>
+<body class="auth-body">
+<div id="app" class="login-wrap">
+  <section class="login-card">
+    <el-tag type="primary" effect="light" round>GitHub Pages • acesso local</el-tag>
+    <h1>Acesso ao painel</h1>
+    <p>Autenticação simples via front-end com token salvo em <code>localStorage</code>.</p>
+
+    <el-form label-position="top" @submit.prevent="entrar">
+      <el-form-item label="Senha">
+        <el-input v-model="senha" show-password placeholder="Informe a senha"></el-input>
+      </el-form-item>
+      <el-button type="primary" :loading="carregando" style="width:100%" @click="entrar">Entrar</el-button>
+    </el-form>
+
+    <div style="margin-top:16px" class="muted">
+      Senha configurada no projeto: <code>74ae96856361ec7f3fecd0538338eb85</code>
+    </div>
+    <div style="margin-top:12px" class="muted">
+      Observação: como é um site estático público, esta barreira é apenas visual e não substitui backend/autenticação real.
+    </div>
+  </section>
+</div>
+<script src="assets/js/login.js"></script>
+</body>
+</html>

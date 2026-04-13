@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lista de Exemplos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css" />
+<link rel="stylesheet" href="assets/css/styles.css" />
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<script src="https://unpkg.com/element-plus"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/componentes.js"></script>
+
+</head>
+<body >
+<div id="app" class="layout">
+  <aside :class="['sidebar', { aberta: sidebarAberta }]">
+    <div class="sidebar__topo">
+      <div>
+        <div class="logo">Enterprise Admin</div>
+        <div class="badge-status">Vue 3 + Element Plus</div>
+      </div>
+      <el-button circle text @click="fecharSidebar" class="hide-desktop">✕</el-button>
+    </div>
+
+    <div class="sidebar__grupo">
+      <p class="sidebar__titulo">Navegação</p>
+      <a href="index.html" :class="['menu-link', { ativo: paginaAtual === 'dashboard' }]">🏠 <span>Dashboard</span></a>
+      <a href="exemplos.html" :class="['menu-link', { ativo: paginaAtual === 'exemplos' }]">🧪 <span>Lista de exemplos</span></a>
+      <a href="conteudo.html" :class="['menu-link', { ativo: paginaAtual === 'conteudo' }]">📝 <span>Conteúdo dinâmico</span></a>
+    </div>
+
+    <div class="sidebar__grupo">
+      <p class="sidebar__titulo">Ações</p>
+      <a href="login.html" class="menu-link">🔐 <span>Login</span></a>
+      <button class="menu-link" style="width:100%;border:none;cursor:pointer;text-align:left" @click="sair">🚪 <span>Sair</span></button>
+    </div>
+  </aside>
+
+  <main class="main">
+    
+<header class="topbar">
+  <div style="display:flex; gap:10px; align-items:center;">
+    <button class="botao-menu" @click="alternarSidebar">☰</button>
+    <div class="topbar__titulo">
+      <h1>Lista de páginas de exemplo</h1>
+      <p>Catálogo dinâmico gerado a partir do JSON salvo no localStorage.</p>
+    </div>
+  </div>
+  <div class="topbar__acoes">
+    <el-input v-model="termo" placeholder="Buscar por título, categoria ou arquivo" clearable style="width:min(320px, 70vw)"></el-input>
+  </div>
+</header>
+<section class="conteudo">
+  <section class="painel">
+    <div class="painel__cabecalho">
+      <div>
+        <h2>Exemplos encontrados</h2>
+        <p>{{ exemplosFiltrados.length }} item(ns)</p>
+      </div>
+      <el-button type="primary" plain @click="ir('conteudo.html')">Editar catálogo</el-button>
+    </div>
+    <div class="exemplos-grid">
+      <article class="card-exemplo" v-for="item in exemplosFiltrados" :key="item.arquivo">
+        <h3>{{ item.titulo }}</h3>
+        <p>{{ item.descricao }}</p>
+        <div class="muted" style="margin-bottom:12px">{{ item.categoria }} • {{ item.destaque }} • {{ item.arquivo }}</div>
+        <el-button type="primary" @click="ir(item.arquivo)">Abrir página</el-button>
+      </article>
+    </div>
+  </section>
+</section>
+
+    <div class="footer">Conteúdo dinâmico salvo em localStorage • Projeto estático para GitHub Pages</div>
+  </main>
+</div>
+<script src="assets/js/exemplos.js"></script>
+</body>
+</html>
